@@ -1,0 +1,47 @@
+/* src/styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('C:\Users\kolla\Desktop\Book-Ease\travel-booking-website\public\background.jpg'); /* Use the image from the public folder */
+  background-size: cover; /* Make the background cover the entire viewport */
+  background-position: center; /* Center the background image */
+  margin: 0; /* Remove default margin */
+  padding: 20px; /* Add padding to body */
+  color: rgb(255, 255, 255); /* Change text color for better readability */
+}
+
+.container {
+  max-width: 500px;
+  margin: auto; /* Center the container */
+  background: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  padding: 20px; /* Padding for the container */
+  border-radius: 10px; /* Round the corners */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Input and button styles */
+input {
+  width: 100%; /* Full width input */
+  padding: 10px; /* Padding for input */
+  margin: 10px 0; /* Margin for spacing */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Round edges */
+}
+
+button {
+  width: 100%; /* Full width button */
+  padding: 10px; /* Padding for button */
+  background-color: blue; /* Button color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Round edges */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+  background-color: darkblue; /* Darker blue on hover */
+}
+
+/* Centering text for paragraphs */
+p {
+  text-align: center; /* Center text */
+}
