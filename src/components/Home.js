@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Login from './Login';
 import Register from './Register';
 
-const Home = ({ onLogin, onRegister }) => {
+const Home = ({ onRegister, onLogin }) => {
     const [isRegistering, setIsRegistering] = useState(false);
 
     const handleSwitchToRegister = () => setIsRegistering(true);
@@ -11,8 +11,6 @@ const Home = ({ onLogin, onRegister }) => {
 
     return (
         <div>
-            <h2>Welcome to Travel Booking</h2>
-            <p>Your adventure starts here!</p>
             {isRegistering ? (
                 <Register onRegister={onRegister} onSwitchToLogin={handleSwitchToLogin} />
             ) : (

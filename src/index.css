@@ -1,84 +1,71 @@
-/* src/index.css */
-/* src/styles.css */
 body {
-  font-family: Arial, sans-serif;
-  background-image: url('C:\Users\kolla\Desktop\Book-Ease\travel-booking-website\public\background.jpg'); /* Use the image from the public folder */
-  background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the background image */
-    background-repeat: repeat; /* Center the background image */
-  margin: 0; /* Remove default margin */
-  padding: 20px; /* Add padding to body */
-  color: rgba(242, 4, 4, 0.992); /* Change text color for better readability */
-}
-/* src/styles.css */
-.dashboard-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: black;
   color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between title and nav items */
+  align-items: center; /* Center items vertically */
   padding: 20px;
-  z-index: 1000; /* Make sure it appears above other elements */
+  background-color: #222; /* Dark background for header */
+}
+
+.header h1 {
+  margin: 0; /* Remove default margin */
+}
+
+.nav-container {
+  display: flex;
+  gap: 20px; /* Space between nav items */
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none; /* Remove underline */
+  font-size: 16px;
+  display: flex; /* Enable flex for icon alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.nav-item:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.icon {
+  margin-right: 5px; /* Space between icon and text */
 }
 
 .container {
-  max-width: 500px;
-  margin: auto; /* Center the container */
-  background: rgba(255, 255, 255, 0.363); /* Light background with transparency */
-  padding: 20px; /* Padding for the container */
-  border-radius: 10px; /* Round the corners */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center form components */
+  justify-content: center; /* Center form components */
+  flex-grow: 1; /* Allow container to grow */
 }
 
-/* Input and button styles */
 input {
-  width: 100%; /* Full width input */
-  padding: 10px; /* Padding for input */
-  margin: 10px 0; /* Margin for spacing */
-  border: 1px solid #cccccc; /* Light border */
-  border-radius: 5px; /* Round edges */
+  margin: 10px 0; /* Space between input fields */
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  width: 200px; /* Set fixed width for inputs */
 }
 
 button {
-  width: 100%; /* Full width button */
-  padding: 10px; /* Padding for button */
-  background-color: blue; /* Button color */
-  color: white; /* Text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Round edges */
-  cursor: pointer; /* Pointer cursor on hover */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  width: 210px; /* Set fixed width for buttons */
 }
 
 button:hover {
-  background-color: rgb(35, 0, 139); /* Darker blue on hover */
-}
-
-/* Centering text for paragraphs */
-p {
-  text-align: center; /* Center text */
-}/* src/styles.css */
-/* Add this to your existing styles.css */
-nav {
-  margin-bottom: 20px; /* Space between nav and content */
-}
-
-nav ul {
-  list-style: none; /* Remove bullet points */
-  padding: 0; /* Remove padding */
-}
-
-nav ul li {
-  display: inline; /* Display links in a row */
-  margin-right: 15px; /* Space between links */
-}
-
-nav ul li a {
-  text-decoration: none; /* Remove underline from links */
-  color: white; /* White text color */
-}
-
-nav ul li a:hover {
-  text-decoration: underline; /* Underline on hover */
+  background-color: #777;
 }

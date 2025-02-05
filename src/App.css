@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between title and nav items */
+  align-items: center; /* Center items vertically */
+  padding: 20px;
+  background-color: #222; /* Dark background for header */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header h1 {
+  margin: 0; /* Remove default margin */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-container {
+  display: flex;
+  justify-content: flex-end; /* Align nav items to the right */
+  gap: 20px; /* Space between nav items */
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none; /* Remove underline */
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center; /* Center form components */
+  justify-content: center; /* Center form components */
+  flex-grow: 1; /* Allow container to grow */
+}
+
+h1, h2 {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  width: 200px; /* Set fixed width for buttons */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  background-color: #777;
 }
