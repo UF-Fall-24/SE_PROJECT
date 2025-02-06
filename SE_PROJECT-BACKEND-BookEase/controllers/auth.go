@@ -5,6 +5,7 @@ import (
 	 "book-ease-backend/utils"
     "encoding/json"
     "net/http"
+    "log"
 )
 
 func Register(w http.ResponseWriter, r *http.Request) {
@@ -15,8 +16,15 @@ func Register(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    // Check if username is provided
+    if user.Username == "" {
+        http.Error(w, "Username is required", http.StatusBadRequest)
+        return
+    }
+
     err = user.Create()
     if err != nil {
+        log.Printf("Error saving user: %v", err) // Log the error
         http.Error(w, "Failed to create user", http.StatusInternalServerError)
         return
     }
