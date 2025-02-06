@@ -22,6 +22,21 @@ func Register(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    // Validate the password
+	if err := utils.ValidatePassword(user.Password); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+    // Hash the password
+	hashedPassword, err := utils.HashPassword(user.Password)
+	if err != nil {
+		http.Error(w, "Error hashing password", http.StatusInternalServerError)
+		return
+	}
+	user.Password = hashedPassword
+
+
     err = user.Create()
     if err != nil {
         log.Printf("Error saving user: %v", err) // Log the error
