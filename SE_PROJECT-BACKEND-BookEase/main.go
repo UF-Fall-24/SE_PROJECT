@@ -8,9 +8,16 @@ import (
 	"net/http"
 
 	"github.com/gorilla/handlers"
+	"github.com/joho/godotenv" // Import dotenv package
 )
 
 func main() {
+	// Load environment variables
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Warning: No .env file found, using defaults")
+	}
+
 	// Connect to the database
 	config.Connect()
 
