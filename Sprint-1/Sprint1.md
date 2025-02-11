@@ -41,9 +41,9 @@ We successfully completed the following tasks:
     
   Customer Login:
 
-    - API for customer login was implemented and verifies customer credentials.
-    - JWT token is generated successfully upon login.
-    - Password validation was enforced during the login process.
+  - API for customer login was implemented and verifies customer credentials.
+  - JWT token is generated successfully upon login.
+  - Password validation was enforced during the login process.
 
 **Which ones didn’t and why?**
   - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
