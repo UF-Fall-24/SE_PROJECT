@@ -14,39 +14,39 @@ Frontend Development Environment Setup
  - Ensure that the environment supports hot reloading for efficient development.
 
 1.User Registration
--Develop and implement a user registration feature to allow users to create accounts.
--Implement a registration form with fields for username, email, and password.
+ - Develop and implement a user registration feature to allow users to create accounts.
+ - Implement a registration form with fields for username, email, and password.
 
 2.Validate inputs:
--Email must be in a correct format.
--Password must meet security standards (minimum length, special characters, etc.).
--Duplicate emails should not be allowed.
+ - Email must be in a correct format.
+ - Password must meet security standards (minimum length, special characters, etc.).
+ - Duplicate emails should not be allowed.
 
 3.On successful registration:
--Automatically log in the user or prompt for email verification.
--Display clear error messages for invalid or incomplete inputs.
--User Login
--Develop and implement an authentication system for user login.
--Create a login form with fields for email and password.
--Implement form validation to ensure both fields are required.
--Authenticate users by verifying credentials against the backend API.
--Show error messages if the login fails (e.g., incorrect password, unregistered email).
--Store JWT token securely upon successful login for session management.
--Implement a logout button that clears the session and token.
+ - Automatically log in the user or prompt for email verification.
+ - Display clear error messages for invalid or incomplete inputs.
+ - User Login
+ - Develop and implement an authentication system for user login.
+ - Create a login form with fields for email and password.
+ - Implement form validation to ensure both fields are required.
+ - Authenticate users by verifying credentials against the backend API.
+ - Show error messages if the login fails (e.g., incorrect password, unregistered email).
+ - Store JWT token securely upon successful login for session management.
+ - Implement a logout button that clears the session and token.
 
 4.Performance Optimization
--Enhance frontend performance to improve user experience.
--Implement React.lazy and Suspense for lazy loading of components.
--Display a loading indicator when switching between pages.
--Reduce the initial bundle size to improve loading speed.
--Ensure all routes function correctly without breaking any features.
+ - Enhance frontend performance to improve user experience.
+ - Implement React.lazy and Suspense for lazy loading of components.
+ - Display a loading indicator when switching between pages.
+ - Reduce the initial bundle size to improve loading speed.
+ - Ensure all routes function correctly without breaking any features.
 
 **What Issues Your Team Planned to Address?**
-Our team planned to address the following key frontend issues:
-Proper setup of React development environment.
-Implementation of secure and user-friendly authentication mechanisms.
-Ensuring a smooth registration and login experience.
-Improving website performance using lazy loading and optimized bundling.
+- Our team planned to address the following key frontend issues:
+- - Proper setup of React development environment.
+  - Implementation of secure and user-friendly authentication mechanisms.
+  - Ensuring a smooth registration and login experience.
+  - Improving website performance using lazy loading and optimized bundling.
 
 **Which Ones Were Successfully Completed?**
  
