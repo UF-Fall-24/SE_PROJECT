@@ -6,15 +6,15 @@ Sprint 1
 **Backend User stories**
 
 1. Customer Registration
-  a. Design and implement a database schema for storing customer registration details.
-  b. Develop an API to accept and store customer data in the database.
-  c. Implement data validation to ensure accuracy and completeness.
-  d. Enforce password validation rules (e.g., length, complexity).
+- Design and implement a database schema for storing customer registration details.
+- Develop an API to accept and store customer data in the database.
+- Implement data validation to ensure accuracy and completeness.
+- Enforce password validation rules (e.g., length, complexity).
 
 2. Customer Login
-  a. Develop an API to authenticate customers by verifying their credentials.
-  b. Implement JWT-based authentication to generate secure tokens upon successful login.
-  c. Validate password security during login attempts.
+- Develop an API to authenticate customers by verifying their credentials.
+- Implement JWT-based authentication to generate secure tokens upon successful login.
+- Validate password security during login attempts.
 
 
 
@@ -34,10 +34,10 @@ We successfully completed the following tasks:
 **Backend**
    Customer Registration:
 
-    - Database schema for customer registration was created.
-    - API for customer registration was implemented and successfully stores data in the database.
-    - Customer data validation (format, required fields) was enforced.
-    - Password validation rules (e.g., minimum length, special characters) were implemented.
+  - Database schema for customer registration was created.
+  - API for customer registration was implemented and successfully stores data in the database.
+  - Customer data validation (format, required fields) was enforced.
+  - Password validation rules (e.g., minimum length, special characters) were implemented.
     
   Customer Login:
 
