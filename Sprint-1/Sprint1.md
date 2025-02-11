@@ -41,12 +41,36 @@ Frontend Development Environment Setup
  - Reduce the initial bundle size to improve loading speed.
  - Ensure all routes function correctly without breaking any features.
 
+**Backend User stories**
+
+1. Customer Registration
+- Design and implement a database schema for storing customer registration details.
+- Develop an API to accept and store customer data in the database.
+- Implement data validation to ensure accuracy and completeness.
+- Enforce password validation rules (e.g., length, complexity).
+
+2. Customer Login
+- Develop an API to authenticate customers by verifying their credentials.
+- Implement JWT-based authentication to generate secure tokens upon successful login.
+- Validate password security during login attempts.
+
+
 **What Issues Your Team Planned to Address?**
 - Our team planned to address the following key frontend issues:
+  
   - Proper setup of React development environment.
   - Implementation of secure and user-friendly authentication mechanisms.
   - Ensuring a smooth registration and login experience.
   - Improving website performance using lazy loading and optimized bundling.
+  
+- Our backend team planned to address the following key issues related to customer authentication and security:
+
+  - Implementing a secure customer registration and login process.
+  - Ensuring proper validation of customer data to maintain data integrity.
+  - Implementing JWT-based authentication for session management.
+  - Enhancing password security through validation mechanisms.
+  - Designing an optimized database schema to efficiently store customer data.
+
 
 **Which Ones Were Successfully Completed?**
  
@@ -70,47 +94,6 @@ Performance Optimization:
  - A loading indicator appears while navigating pages.
  - The bundle size was reduced for better performance.
 
-**Which Ones Didn’t and Why?**
-
- - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
- - Reason for Incomplete Tasks:
- - Some issues required further debugging and testing.\
- - More detailed logging and error handling mechanisms are needed for failed login attempts.
- - Some UI elements require improved accessibility and responsiveness.
- - Further debugging is required to ensure seamless authentication and performance optimization.
- - Need to conduct more user testing to identify potential UI/UX issues.
-
-
-**Backend User stories**
-
-1. Customer Registration
-- Design and implement a database schema for storing customer registration details.
-- Develop an API to accept and store customer data in the database.
-- Implement data validation to ensure accuracy and completeness.
-- Enforce password validation rules (e.g., length, complexity).
-
-2. Customer Login
-- Develop an API to authenticate customers by verifying their credentials.
-- Implement JWT-based authentication to generate secure tokens upon successful login.
-- Validate password security during login attempts.
-
-
-
-**What issues your team planned to address?**
-
-Our team planned to address the following key issues related to customer authentication and security:
-
-  - Implementing a secure customer registration and login process.
-  - Ensuring proper validation of customer data to maintain data integrity.
-  - Implementing JWT-based authentication for session management.
-  - Enhancing password security through validation mechanisms.
-  - Designing an optimized database schema to efficiently store customer data.
-
-**Which ones were successfully completed?**
-
-We successfully completed the following tasks:
-
-
 **Backend**
 
    Customer Registration:
@@ -126,10 +109,22 @@ We successfully completed the following tasks:
   - JWT token is generated successfully upon login.
   - Password validation was enforced during the login process.
 
-**Which ones didn’t and why?**
-  - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
+**Which Ones Didn’t and Why?**
+
+**Frontend**
+ - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
+ - Reason for Incomplete Tasks:
+ - Some issues required further debugging and testing.\
+ - More detailed logging and error handling mechanisms are needed for failed login attempts.
+ - Some UI elements require improved accessibility and responsiveness.
+ - Further debugging is required to ensure seamless authentication and performance optimization.
+ - Need to conduct more user testing to identify potential UI/UX issues.
+
+**Backend**
+
+ - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
   Reason for Incomplete Tasks:
-  - Some issues required further debugging and testing.
+ - Some issues required further debugging and testing.
 
 
 Demo URL: https://github.com/UF-Fall-24/SE_PROJECT/blob/main/Sprint-1/Front_end_and_back_end.mp4
