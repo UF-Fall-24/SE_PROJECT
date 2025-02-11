@@ -13,16 +13,16 @@ Frontend Development Environment Setup
  - Configure Git for version control and repository management.
  - Ensure that the environment supports hot reloading for efficient development.
 
-1.User Registration
+1. User Registration
  - Develop and implement a user registration feature to allow users to create accounts.
  - Implement a registration form with fields for username, email, and password.
 
-2.Validate inputs:
+2. Validate inputs:
  - Email must be in a correct format.
  - Password must meet security standards (minimum length, special characters, etc.).
  - Duplicate emails should not be allowed.
 
-3.On successful registration:
+3. On successful registration:
  - Automatically log in the user or prompt for email verification.
  - Display clear error messages for invalid or incomplete inputs.
  - User Login
@@ -34,7 +34,7 @@ Frontend Development Environment Setup
  - Store JWT token securely upon successful login for session management.
  - Implement a logout button that clears the session and token.
 
-4.Performance Optimization
+4. Performance Optimization
  - Enhance frontend performance to improve user experience.
  - Implement React.lazy and Suspense for lazy loading of components.
  - Display a loading indicator when switching between pages.
@@ -43,42 +43,42 @@ Frontend Development Environment Setup
 
 **What Issues Your Team Planned to Address?**
 - Our team planned to address the following key frontend issues:
-- - Proper setup of React development environment.
+  - Proper setup of React development environment.
   - Implementation of secure and user-friendly authentication mechanisms.
   - Ensuring a smooth registration and login experience.
   - Improving website performance using lazy loading and optimized bundling.
 
 **Which Ones Were Successfully Completed?**
  
-We successfully completed the following tasks:
--Frontend Environment Setup:
--Node.js, VS Code, React.js, and Git were successfully set up.
+We successfully completed the following tasks
+ - Frontend Environment Setup:
+ - Node.js, VS Code, React.js, and Git were successfully set up.
 
 User Registration:
--Registration form was implemented and validated.
--Email format and password security validation were enforced.
--Error messages for invalid inputs were displayed.
--Users were either logged in automatically or prompted for verification.
+ - Registration form was implemented and validated.
+ - Email format and password security validation were enforced.
+ - Error messages for invalid inputs were displayed.
+ - Users were either logged in automatically or prompted for verification.
 
 User Login:
--Login form was created and properly validates inputs.
--API authentication works, and JWT tokens are stored securely.
--Users can log out and clear their session.
+ - Login form was created and properly validates inputs.
+ - API authentication works, and JWT tokens are stored securely.
+ - Users can log out and clear their session.
 
 Performance Optimization:
--Components are now lazy-loaded using React.lazy and Suspense.
--A loading indicator appears while navigating pages.
--The bundle size was reduced for better performance.
+ - Components are now lazy-loaded using React.lazy and Suspense.
+ - A loading indicator appears while navigating pages.
+ - The bundle size was reduced for better performance.
 
 **Which Ones Didn’t and Why?**
 
--Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
--Reason for Incomplete Tasks:
--Some issues required further debugging and testing.
--More detailed logging and error handling mechanisms are needed for failed login attempts.
--Some UI elements require improved accessibility and responsiveness.
--Further debugging is required to ensure seamless authentication and performance optimization.
--Need to conduct more user testing to identify potential UI/UX issues.
+ - Error handling and logging mechanisms may still need enhancements to capture invalid login attempts properly.
+ - Reason for Incomplete Tasks:
+ - Some issues required further debugging and testing.\
+ - More detailed logging and error handling mechanisms are needed for failed login attempts.
+ - Some UI elements require improved accessibility and responsiveness.
+ - Further debugging is required to ensure seamless authentication and performance optimization.
+ - Need to conduct more user testing to identify potential UI/UX issues.
 
 
 **Backend User stories**
