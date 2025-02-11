@@ -6,12 +6,12 @@ Sprint 1
 
 Frontend Development Environment Setup
 
--Design and implement a properly configured frontend development environment to efficiently build, test, and deploy the Book-Ease web application.
--Install and configure Node.js to manage dependencies.
--Set up VS Code as the primary development environment.
--Initialize a React.js project using Create React App or Vite.
--Configure Git for version control and repository management.
--Ensure that the environment supports hot reloading for efficient development.
+ - Design and implement a properly configured frontend development environment to efficiently build, test, and deploy the Book-Ease web application.
+ - Install and configure Node.js to manage dependencies.
+ - Set up VS Code as the primary development environment.
+ - Initialize a React.js project using Create React App or Vite.
+ - Configure Git for version control and repository management.
+ - Ensure that the environment supports hot reloading for efficient development.
 
 1.User Registration
 -Develop and implement a user registration feature to allow users to create accounts.
