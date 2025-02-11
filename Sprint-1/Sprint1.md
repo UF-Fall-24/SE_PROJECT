@@ -18,7 +18,8 @@ Sprint 1
 
 
 
-**What issues your team planned to address?**\n
+**What issues your team planned to address?**
+
 Our team planned to address the following key issues related to customer authentication and security:
 
   - Implementing a secure customer registration and login process.
@@ -27,11 +28,13 @@ Our team planned to address the following key issues related to customer authent
   - Enhancing password security through validation mechanisms.
   - Designing an optimized database schema to efficiently store customer data.
 
-**Which ones were successfully completed?**\n
+**Which ones were successfully completed?**
+
 We successfully completed the following tasks:
 
 
-**Backend**\n
+**Backend**
+
    Customer Registration:
 
   - Database schema for customer registration was created.
