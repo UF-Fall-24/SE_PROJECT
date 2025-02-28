@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS packages (
 -- ('Island Romance', 'Perfect for couples, this package offers private beach dinners and sunset cruises.', 1400.00, 5, 4, 'Seychelles'),
 -- ('Festival Fiesta', 'Experience vibrant local festivals, parades, and cultural events.', 650.00, 3, 2, 'Spain');
 
-
 CREATE TABLE IF NOT EXISTS hotels (
     id INT AUTO_INCREMENT PRIMARY KEY,
     hotel_name VARCHAR(255) NOT NULL,
@@ -51,9 +50,35 @@ CREATE TABLE IF NOT EXISTS hotels (
     city VARCHAR(255) NOT NULL,
     description TEXT,
     rating DECIMAL(2,1),
+    room_type VARCHAR(100),        -- e.g., Deluxe, Suite, Standard, Luxury
+    room_price DECIMAL(10,2),        -- Price corresponding to the room type
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- INSERT INTO hotels (hotel_name, address, city, description, rating, room_type, room_price)
+-- VALUES
+-- ('Grand Plaza', '123 Main St', 'New York', 'A luxury hotel in downtown New York.', 4.5, 'Deluxe', 250.00),
+-- ('Seaside Resort', '456 Beach Ave', 'Miami', 'Relax by the ocean in a modern resort.', 4.2, 'Suite', 300.00),
+-- ('Mountain Inn', '789 Alpine Rd', 'Denver', 'Cozy inn with stunning mountain views.', 4.0, 'Standard', 180.00),
+-- ('City Center Hotel', '101 Central Blvd', 'Chicago', 'Located in the heart of the city with modern amenities.', 4.3, 'Deluxe', 220.00),
+-- ('Riverside Hotel', '202 River St', 'Austin', 'Enjoy scenic river views and contemporary comfort.', 4.1, 'Suite', 260.00),
+-- ('Historic Mansion', '303 Old Town Rd', 'Boston', 'Experience history in a beautifully renovated mansion.', 4.6, 'Luxury', 350.00),
+-- ('Urban Boutique', '404 Fashion Ln', 'San Francisco', 'Chic and modern boutique hotel.', 4.4, 'Deluxe', 270.00),
+-- ('Eco Lodge', '505 Greenway', 'Portland', 'Sustainable hotel with eco-friendly amenities.', 4.2, 'Standard', 190.00),
+-- ('Lakeside Retreat', '606 Lakeview Dr', 'Minneapolis', 'Relax by the lake in a serene setting.', 4.5, 'Suite', 240.00),
+-- ('Downtown Express', '707 Market St', 'Los Angeles', 'Convenient location with quick access to major attractions.', 4.0, 'Standard', 210.00),
+-- ('Royal Palace', '808 King St', 'Las Vegas', 'Experience ultimate luxury and elegance.', 4.8, 'Deluxe', 400.00),
+-- ('Coastal Comfort', '909 Ocean Dr', 'San Diego', 'Enjoy the coastal breeze and modern comforts.', 4.3, 'Suite', 280.00),
+-- ('Suburban Stay', '111 Suburb Rd', 'Houston', 'Quiet and comfortable for business travelers.', 4.0, 'Standard', 170.00),
+-- ('Skyline Heights', '222 Highrise Ave', 'Seattle', 'Spectacular views of the city skyline.', 4.4, 'Deluxe', 230.00),
+-- ('Desert Oasis', '333 Sand Dune Rd', 'Phoenix', 'An oasis in the heart of the desert.', 4.2, 'Suite', 260.00),
+-- ('Artistic Abode', '444 Culture St', 'Santa Fe', 'A creative space with local art influences.', 4.6, 'Deluxe', 250.00),
+-- ('Modern Mansion', '555 Contemporary Ct', 'Dallas', 'Spacious and modern with luxurious amenities.', 4.5, 'Luxury', 350.00),
+-- ('Boutique Bliss', '666 Style Ave', 'Atlanta', 'Personalized service in a boutique setting.', 4.3, 'Deluxe', 240.00),
+-- ('Paradise Inn', '777 Tropical Blvd', 'Honolulu', 'Relax in a tropical paradise.', 4.7, 'Suite', 320.00),
+-- ('Budget Stay', '888 Economy Rd', 'Orlando', 'Affordable stay with essential amenities.', 3.8, 'Standard', 120.00);
+
 
 
 CREATE TABLE IF NOT EXISTS vehicles (
