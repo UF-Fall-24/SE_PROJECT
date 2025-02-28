@@ -13,7 +13,7 @@ var DB *sql.DB
 
 func Connect() {
 	// Replace these credentials with your MySQL username, password, and database name
-	dsn := "root:Kartik@444@tcp(localhost:3306)/"
+	dsn := "root:Vitap@123@tcp(localhost:3306)/"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		panic(err)
@@ -25,7 +25,7 @@ func Connect() {
 	}
 
 	// Connect to the newly created database
-	dsn = "root:Kartik@444@tcp(localhost:3306)/book_ease?multiStatements=true&parseTime=true"
+	dsn = "root:Vitap@123@tcp(localhost:3306)/book_ease?multiStatements=true&parseTime=true"
 	DB, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("Error connecting to database:", err)

@@ -30,6 +30,11 @@ func SetupRoutes() *mux.Router {
 
 	protected.HandleFunc("/dashboard", controllers.GetDashboard).Methods("GET")
 
+	// **User Profile Management Routes**
+	protected.HandleFunc("/users/profile/{id}", controllers.GetUserProfile).Methods("GET")  
+	protected.HandleFunc("/users/profile/{id}", controllers.UpdateUserProfile).Methods("PUT")
+
+
 	// Package endpoints
 	protected.HandleFunc("/packages", controllers.CreatePackage).Methods("POST")
 	protected.HandleFunc("/packages/{id}", controllers.UpdatePackage).Methods("PUT")
