@@ -32,6 +32,6 @@ func main() {
 	)
 
 	// Start the server with CORS middleware
-	fmt.Println("Server running on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", cors(router)))
+	fmt.Println("Server running on port 8000...")
+	log.Fatal(http.ListenAndServe(":8000", cors(router)))
 }

@@ -25,7 +25,7 @@ func Connect() {
 	}
 
 	// Connect to the newly created database
-	dsn = "root:Kartik@444@tcp(localhost:3306)/book_ease"
+	dsn = "root:Kartik@444@tcp(localhost:3306)/book_ease?multiStatements=true&parseTime=true"
 	DB, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("Error connecting to database:", err)
