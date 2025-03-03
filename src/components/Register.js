@@ -32,6 +32,7 @@ const Register = ({ onRegister }) => {
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
+                    name="username"
                     placeholder="Username" 
                     value={username} 
                     onChange={(e) => setUsername(e.target.value)} 
@@ -39,6 +40,7 @@ const Register = ({ onRegister }) => {
                 />
                 <input 
                     type="email" 
+                    name="email"
                     placeholder="Email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
@@ -46,6 +48,7 @@ const Register = ({ onRegister }) => {
                 />
                 <input 
                     type="password" 
+                    name="password"
                     placeholder="Password" 
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
