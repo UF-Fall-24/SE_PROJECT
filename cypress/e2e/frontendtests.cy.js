@@ -54,4 +54,5 @@ describe('Frontend Cypress Tests', () => {
     // Test should pass after verifying dashboard
     cy.log('Test Passed: User successfully registered, logged in, and reached the dashboard.');
   });
+  
 });
