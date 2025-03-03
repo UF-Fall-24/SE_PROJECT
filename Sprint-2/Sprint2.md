@@ -756,7 +756,45 @@ Hotels API
     Delete Hotel 
     Endpoint: DELETE /hotels/{id} 
     Description: Deletes a hotel record. 
+    Success Response
+        Status Code: 200 OK
+        Content-Type: application/json
     Response Example (Success - 200 OK): 
-    { 
-    "message": "Hotel was deleted" 
-    } 
+        { 
+        "message": "Hotel was deleted" 
+        } 
+    Error Responses
+        400 Bad Request: If the id is invalid.
+        500 Internal Server Error: If an error occurs during deletion.
+    Get Hotels by Location
+    Method: GET
+    URL: /hotels/location?location=<city>
+    Authentication: Public
+    Description
+    Retrieves hotels filtered by the provided location (city).
+
+    Request Headers
+        None required.
+    Query Parameter
+        location (string): The city to filter hotels by.
+    Success Response
+        Status Code: 200 OK
+        Content-Type: application/json
+        [
+            {
+                "id": 22,
+                "hotel_name": "City Central Hotel",
+                "address": "123 Main St",
+                "city": "New York",
+                "description": "Hotel located in the heart of New York City.",
+                "rating": 4.2,
+                "room_type": "Standard",
+                "room_price": 200.00,
+                "created_at": "2025-03-05T10:00:00Z",
+                "updated_at": "2025-03-05T10:00:00Z"
+            }
+        ]
+    Error Responses
+        400 Bad Request: If the location query parameter is missing.
+        500 Internal Server Error: If an error occurs during the query.
+
