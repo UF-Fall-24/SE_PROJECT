@@ -1,3 +1,72 @@
+**FrontEnd**
+--Prathima Dodda
+--Sai Preethi Kota
+**Backend**
+--Varshini Kopparla
+--Karthik Karnam
+**Github link**---https://github.com/UF-Fall-24/SE_PROJECT
+**Video link** ---https://github.com/UF-Fall-24/SE_PROJECT/tree/main/Sprint-2
+
+**Detailed explanation of the completed work implemented in the frontend**
+1. Dashboard Enhancements
+
+Implemented Packages section in the dashboard to display available travel packages.
+
+Integrated backend API to fetch and display real-time travel packages.
+
+Improved UI for seamless user experience.
+
+2. Cart Functionality
+
+Implemented Add to Cart feature for users to add selected travel packages.
+
+Integrated backend API to manage cart items.
+
+Implemented Remove from Cart functionality, allowing users to delete unwanted packages.
+
+Displayed selected packages in the cart dynamically.
+
+3. Frontend-Backend Integration
+
+Connected frontend with backend API for seamless data flow.
+
+Ensured authentication and authorization are handled properly.
+
+Improved error handling for failed API calls.
+
+4. Testing Implementation
+
+Created Cypress End-to-End Tests to validate real user interactions.
+
+Covered authentication, package listing, cart functionality, and navigation.
+
+Cypress Test Cases Implemented:
+
+Login Tests:
+
+Successful login redirects to dashboard and verifies available packages.
+
+Ensures cart logo is present on the dashboard.
+
+Checks for "Search Transport" functionality.
+
+Navigation Tests:
+
+Navigate to contact and about pages.
+
+Navigate to home page and click register/login buttons.
+
+User Registration & Login Tests:
+
+Register a new user, log in, and verify dashboard access.
+
+Logout Tests:
+
+Verify logout button is visible.
+
+Ensure successful logout redirects to login page and removes the session token.
+
+
 **Detailed explanation of the completed work implemented in the backend**
 
 Accommodations
