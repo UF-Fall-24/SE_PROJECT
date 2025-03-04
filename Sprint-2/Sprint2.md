@@ -36,13 +36,15 @@ Improved error handling for failed API calls.
 
 4. Testing Implementation
 
+Created Unit test cases
+
 Created Cypress End-to-End Tests to validate real user interactions.
 
 Covered authentication, package listing, cart functionality, and navigation.
 
-Cypress Test Cases Implemented:
+**List of unit tests and Cypress test cases**
 
-Login Tests:
+Login Tests using Cypress and (Vite):
 
 Successful login redirects to dashboard and verifies available packages.
 
