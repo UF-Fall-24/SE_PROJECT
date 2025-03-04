@@ -25,26 +25,6 @@ const App = () => {
             setIsLoggedIn(true);
         }
     }, []);
-
-    const handleRegister = async (username, email, password) => {
-        try {
-            const response = await fetch("http://localhost:8000/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, email, password }),
-            });
-
-            if (response.ok) {
-                alert("Registration successful! Please log in.");
-            } else {
-                alert("Registration failed. Try again.");
-            }
-        } catch (error) {
-            console.error("Error registering:", error);
-            alert("Server error. Please try again.");
-        }
-    };
-
     const handleLogin = async (email, password) => {
         try {
             const response = await fetch("http://localhost:8000/login", {
@@ -52,11 +32,15 @@ const App = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
+    
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
                 setIsLoggedIn(true);
                 setToken(data.token);
+                
+                // ✅ Redirect to Dashboard after login
+                window.location.href = "/dashboard"; 
             } else {
                 alert("Invalid credentials. Please try again.");
             }
@@ -65,12 +49,32 @@ const App = () => {
             alert("Server error. Please try again.");
         }
     };
-
+    const handleRegister = async (username, email, password) => {
+        try {
+            const response = await fetch("http://localhost:8000/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
+            });
+    
+            if (response.ok) {
+                alert("Registration successful! Logging in...");
+                await handleLogin(email, password); // ✅ Auto-login after registration
+            } else {
+                alert("Registration failed. Try again.");
+            }
+        } catch (error) {
+            console.error("Error registering:", error);
+            alert("Server error. Please try again.");
+        }
+    };
+    
     const handleLogout = () => {
         setIsLoggedIn(false);
         setToken(null);
         localStorage.removeItem('token');
         setBookedFlights([]);
+        window.location.href = "/login"; // ✅ Redirect to login after logout
     };
 
     return (
@@ -100,7 +104,7 @@ const App = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/register" element={<Register onRegister={handleRegister} />} />
                         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-                        <Route path="/dashboard" element={isLoggedIn ? <Dashboard bookedFlights={bookedFlights} /> : <Navigate to="/login" />} />
+                        <Route path="/dashboard" element={localStorage.getItem("token") ? <Dashboard bookedFlights={bookedFlights} /> : <Navigate to="/login" />} />
                         <Route path="/reset-password" element={<ResetPassword />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                     </Routes>

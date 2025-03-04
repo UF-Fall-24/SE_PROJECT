@@ -9,6 +9,12 @@ describe('Frontend Cypress Tests', () => {
     cy.contains('Contact Us'); // Verify presence of content
   });
 
+  it('should allow navigation to about us page', () => {
+    cy.get('a[href="/about"]').click();
+    cy.url().should('include', '/about');
+    cy.contains('About Us'); // ✅ Verify "About Us" content
+  });
+
   it('should allow a user to navigate to home page and click register button', () => {
     cy.get('a[href="/"]').click(); // Navigate to home page
     cy.url().should('include', '/');
@@ -33,7 +39,7 @@ describe('Frontend Cypress Tests', () => {
     //const uniqueEmail = testuser${Date.now()}@example.com;
     cy.get('input[name="username"]').should('be.visible').type('TestUser123');
     cy.get('input[name="email"]').should('be.visible').type('uniqueemail@gmail.com');
-    cy.get('input[name="password"]').should('be.visible').type('password123');
+    cy.get('input[name="password"]').should('be.visible').type('Password@123');
     
     cy.get('button[type="submit"]').click();
 
@@ -43,7 +49,7 @@ describe('Frontend Cypress Tests', () => {
 
     // Perform login with registered credentials
     cy.get('input[name="email"]').should('be.visible').type('uniqueemail@gmail.com');
-    cy.get('input[name="password"]').should('be.visible').type('password123');
+    cy.get('input[name="password"]').should('be.visible').type('Password@123');
     
     cy.get('button[type="submit"]').click();
     
