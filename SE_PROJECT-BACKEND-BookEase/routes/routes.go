@@ -62,5 +62,9 @@ func SetupRoutes() *mux.Router {
 	protected.HandleFunc("/package_bookings/{booking_id}", controllers.UpdatePackageBooking).Methods("PUT")
 	protected.HandleFunc("/package_bookings/{booking_id}", controllers.DeletePackageBooking).Methods("DELETE")
 
+	//Accomodation Booking endpoints
+	protected.HandleFunc("/accommodation_bookings", controllers.CreateAccommodationBooking).Methods("POST")
+
+
 	return router
 }
