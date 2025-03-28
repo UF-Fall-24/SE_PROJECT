@@ -1,0 +1,32 @@
+.dashboard-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboard-item {
+  cursor: pointer;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.dashboard-item:hover {
+  transform: scale(1.05);
+}
+
+.dashboard-item h3 {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
