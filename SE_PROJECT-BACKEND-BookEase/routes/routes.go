@@ -31,9 +31,8 @@ func SetupRoutes() *mux.Router {
 	protected.HandleFunc("/dashboard", controllers.GetDashboard).Methods("GET")
 
 	// User Profile Management Routes
-	protected.HandleFunc("/users/profile/{id}", controllers.GetUserProfile).Methods("GET")  
+	protected.HandleFunc("/users/profile/{id}", controllers.GetUserProfile).Methods("GET")
 	protected.HandleFunc("/users/profile/{id}", controllers.UpdateUserProfile).Methods("PUT")
-
 
 	// Package endpoints
 	protected.HandleFunc("/packages", controllers.CreatePackage).Methods("POST")
@@ -46,18 +45,22 @@ func SetupRoutes() *mux.Router {
 	protected.HandleFunc("/hotels/{id}", controllers.DeleteHotel).Methods("DELETE")
 
 	// Accommodation Endpoints
-	protected.HandleFunc("/accommodations", controllers.CreateAccommodation).Methods("POST")      // Create a new accommodation
-	protected.HandleFunc("/accommodations", controllers.GetAccommodations).Methods("GET")        // Retrieve all accommodations
-	protected.HandleFunc("/accommodations/{id}", controllers.GetAccommodation).Methods("GET")    // Retrieve accommodation by ID
-	protected.HandleFunc("/accommodations/{id}", controllers.UpdateAccommodation).Methods("PUT") // Update accommodation
+	protected.HandleFunc("/accommodations", controllers.CreateAccommodation).Methods("POST")        // Create a new accommodation
+	protected.HandleFunc("/accommodations", controllers.GetAccommodations).Methods("GET")           // Retrieve all accommodations
+	protected.HandleFunc("/accommodations/{id}", controllers.GetAccommodation).Methods("GET")       // Retrieve accommodation by ID
+	protected.HandleFunc("/accommodations/{id}", controllers.UpdateAccommodation).Methods("PUT")    // Update accommodation
 	protected.HandleFunc("/accommodations/{id}", controllers.DeleteAccommodation).Methods("DELETE") // Delete accommodation
 
 	// Booking Management Routes
-	protected.HandleFunc("/bookings", controllers.CreateBooking).Methods("POST") // Create a new booking
-	protected.HandleFunc("/bookings/{id}", controllers.GetBooking).Methods("GET") // Get a specific booking
+	protected.HandleFunc("/bookings", controllers.CreateBooking).Methods("POST")                   // Create a new booking
+	protected.HandleFunc("/bookings/{id}", controllers.GetBooking).Methods("GET")                  // Get a specific booking
 	protected.HandleFunc("/bookings/user/{user_id}", controllers.GetBookingsByUser).Methods("GET") // Get all bookings for a user
-	protected.HandleFunc("/bookings/{id}/cancel", controllers.CancelBooking).Methods("PUT") // Cancel a booking
+	protected.HandleFunc("/bookings/{id}/cancel", controllers.CancelBooking).Methods("PUT")        // Cancel a booking
 
+	// Package Booking endpoints
+	protected.HandleFunc("/package_bookings", controllers.CreatePackageBooking).Methods("POST")
+	protected.HandleFunc("/package_bookings/{booking_id}", controllers.UpdatePackageBooking).Methods("PUT")
+	protected.HandleFunc("/package_bookings/{booking_id}", controllers.DeletePackageBooking).Methods("DELETE")
 
 	return router
 }
