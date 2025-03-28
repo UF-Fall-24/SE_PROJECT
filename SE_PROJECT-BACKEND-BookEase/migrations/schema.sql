@@ -155,7 +155,85 @@ BEGIN
 END;
 
 
+-- package bookings table
+
+-- Create package_bookings table without a generated column
+CREATE TABLE IF NOT EXISTS package_bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    package_booking_id VARCHAR(20) UNIQUE,
+    package_id INT NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) AUTO_INCREMENT=1000;
 
 
 
+DROP PROCEDURE IF EXISTS InsertPackageBooking;
 
+CREATE PROCEDURE InsertPackageBooking(
+    IN p_package_id INT,
+    IN p_first_name VARCHAR(100),
+    IN p_last_name VARCHAR(100)
+)
+BEGIN
+    DECLARE new_id INT;
+    INSERT INTO package_bookings (package_id, first_name, last_name)
+    VALUES (p_package_id, p_first_name, p_last_name);
+    SET new_id = LAST_INSERT_ID();
+    UPDATE package_bookings
+    SET package_booking_id = CONCAT('P', new_id)
+    WHERE id = new_id;
+END;
+
+
+
+-- CALL InsertPackageBooking(1, 'John', 'Doe');
+-- CALL InsertPackageBooking(2, 'Jane', 'Smith');
+-- CALL InsertPackageBooking(3, 'Alice', 'Johnson');
+-- CALL InsertPackageBooking(4, 'Bob', 'Brown');
+-- CALL InsertPackageBooking(5, 'Carol', 'Davis');
+
+
+-- accommodation bookings table
+
+-- Create accommodation_bookings table without a generated column
+CREATE TABLE IF NOT EXISTS accommodation_bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    accommodation_booking_id VARCHAR(20) UNIQUE,
+    package_booking_id VARCHAR(20) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    duration VARCHAR(10) NOT NULL,  -- e.g., '7/6' for days/nights
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_package_booking 
+        FOREIGN KEY (package_booking_id) REFERENCES package_bookings(package_booking_id)
+) AUTO_INCREMENT=1000;
+
+
+DROP PROCEDURE IF EXISTS InsertAccommodationBooking;
+CREATE PROCEDURE InsertAccommodationBooking(
+    IN p_package_booking_id VARCHAR(20),
+    IN p_first_name VARCHAR(100),
+    IN p_last_name VARCHAR(100),
+    IN p_price DECIMAL(10,2),
+    IN p_duration VARCHAR(10)
+)
+BEGIN
+    DECLARE new_id INT;
+    INSERT INTO accommodation_bookings (package_booking_id, first_name, last_name, price, duration)
+    VALUES (p_package_booking_id, p_first_name, p_last_name, p_price, p_duration);
+    SET new_id = LAST_INSERT_ID();
+    UPDATE accommodation_bookings
+    SET accommodation_booking_id = CONCAT('A', new_id)
+    WHERE id = new_id;
+END;
+
+-- CALL InsertAccommodationBooking('P1000', 'John', 'Doe', 300.00, '7/6');
+-- CALL InsertAccommodationBooking('P1001', 'Jane', 'Smith', 350.00, '7/6');
+-- CALL InsertAccommodationBooking('P1002', 'Alice', 'Johnson', 320.00, '7/6');
+-- CALL InsertAccommodationBooking('P1003', 'Bob', 'Brown', 280.00, '7/6');
+-- CALL InsertAccommodationBooking('P1004', 'Carol', 'Davis', 310.00, '7/6');
