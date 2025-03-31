@@ -90,6 +90,15 @@ Accommodation Booking Tests
 
 **Documentation of API's**
 
+### Package Booking Endpoints
+
+| Method | Endpoint                     | Description                                                                 |
+| ------ | ---------------------------- | --------------------------------------------------------------------------  |
+| POST   | /package_bookings            | Create a new package booking. Inserts a new record into the database.       |
+| PUT    | /package_bookings/{id}       | Update an existing package booking by booking ID.                           |
+| DELETE | /package_bookings/{id}       | Delete a package booking record by booking ID.                              |
+
+
 ### Accomodation Booking Endpoints
 
 | Method | Endpoint                     | Description                                                                 |
@@ -103,6 +112,66 @@ Sprint 3: Backend API Documentation
 NAME	UFID
 Kopparla Varshini	22060396
 Karthik Karnam      37476457
+
+Package Booking API
+
+    Create Package Booking
+        Endpoint: POST /package_bookings
+        Description: Adds a new package booking record.
+        Authentication: Requires JWT token.
+        Request Headers:
+            Authorization: Bearer <token>
+            Content-Type: application/json
+        Request Body Example:
+            {
+            "booking_id": 25,
+            "package_id": 3
+            }
+        Response Example (Success - 201 Created):
+            {
+            "id": 7,
+            "booking_id": 25,
+            "package_id": 3
+            }
+        Error Responses:
+            400 Bad Request → Missing or invalid fields.
+            404 Not Found → Booking ID or Package ID does not exist.    
+            500 Internal Server Error → Database insertion error.
+        Edge Cases:
+            Missing Fields (400 Bad Request)
+            Invalid Foreign Keys (404 Not Found)
+            Duplicate Booking Handling (500 Internal Server Error)
+
+    Update Package Booking
+        Endpoint: PUT /package_bookings/{id}
+        Description: Updates an existing package booking by ID.
+        Authentication: Requires JWT token.
+        Request Body Example:
+            {
+            "booking_id": 25,
+            "package_id": 5
+            }
+        Response Example (Success - 200 OK):
+            {
+            "message": "Package booking updated successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid booking ID or malformed request.
+            404 Not Found → Package booking not found.
+            500 Internal Server Error → Error during update operation.
+
+    Delete Package Booking
+        Endpoint: DELETE /package_bookings/{id}
+        Description: Deletes a package booking record by its ID.
+        Authentication: Requires JWT token.
+        Response Example (Success - 200 OK):
+            {
+            "message": "Package booking deleted successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid booking ID format.
+            404 Not Found → Package booking record not found.
+            500 Internal Server Error → Error during deletion process.
 
 Accommodation Booking API
 
