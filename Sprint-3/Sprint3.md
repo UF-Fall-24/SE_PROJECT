@@ -45,3 +45,14 @@ Accommodation Booking Tests
         Tests the deletion of an accommodation booking using a mock DELETE request.
         Confirms a status code 200 OK and correct deletion confirmation message is received.
 
+**Documentation of API's**
+
+### Accomodation Booking Endpoints
+
+| Method | Endpoint                     | Description                                                                 |
+| ------ | ---------------------------- | --------------------------------------------------------------------------  |
+| POST   | /accommodation_bookings      | Create a new accommodation booking. Inserts a new record into the database. |
+| PUT    | /accommodation_bookings/{id} | Update an existing accommodation booking by ID.                             |
+| DELETE | /accommodation_bookings/{id} | Delete an accommodation booking by ID.                                      |
+
+
