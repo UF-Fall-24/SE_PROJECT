@@ -1,17 +1,85 @@
-.team-members {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+/* Overall container styling */
+.about-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  line-height: 1.6;
 }
 
-.team-member {
+/* Hero Section */
+.about-hero {
+  position: relative;
+  height: 50vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('hotels.jpeg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
   text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  animation: slideUp 1.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Information Section */
+.about-info {
+  padding: 2rem;
+  text-align: center;
+  background-color: grey;
+}
+
+/* Team Section with grey background */
+.team-section {
+  padding: 2rem;
+  text-align: center;
+  background-color: black;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Each team member in a box with only a white outline */
+.team-member {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-member:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .team-member img {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-member span {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  transition: font-size 0.3s ease;
+}
+
+.team-member:hover span {
+  font-size: 1.2rem;
 }
