@@ -1,5 +1,36 @@
 **Detailed explanation of the completed work implemented in the backend**
 
+Package Booking (package_bookings.go)
+This file manages the creation, updating, and deletion of package booking records in the package_bookings table.
+
+CreatePackageBooking
+    Responsibility: Handles the creation of a new package booking.
+    Workflow:
+        Reads the JSON payload from the request body and decodes it into a PackageBooking model instance.
+        Performs necessary validations (e.g., required fields).
+        Calls the model’s Create() method to insert the record into the database.
+        On success, returns the created booking with a status code 201 Created.
+        Handles bad requests and database errors with appropriate status codes like 400 or 500.
+
+UpdatePackageBooking
+    Responsibility: Updates an existing package booking by booking_id.
+    Workflow:
+        Extracts the booking_id from the URL parameters.
+        Decodes the update data from the request body into the PackageBooking model.
+        Sets the booking ID and invokes the Update() method to apply changes.
+        On success, returns a confirmation message with 200 OK.
+        If the booking ID is invalid or update fails, returns errors such as 400 Bad Request, 404 Not Found, or 500 Internal Server Error.
+
+DeletePackageBooking
+    Responsibility: Deletes a package booking based on its booking_id.
+    Workflow:
+        Extracts booking_id from the URL.
+        Calls the model’s Delete() method to remove the record.
+        Returns a success message in JSON if deletion is successful.
+        If the booking_id is invalid or deletion fails, responds with appropriate error codes like 404 or 500.
+
+
+
 Accommodation Booking (accommodation_bookings.go)
 This file handles all operations related to the accommodation_bookings table. The work includes:
 
