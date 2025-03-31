@@ -30,3 +30,18 @@ DeleteAccommodationBooking
         Sends appropriate errors if the ID is invalid or deletion fails.    
 
 
+**List of unit tests for the backend APIs**
+
+Accommodation Booking Tests
+    TestCreateAccommodationBooking
+        Verifies that a new accommodation booking can be created successfully using a mock POST request.
+        Ensures a status code 201 Created and correct success message in the response.
+
+    TestUpdateAccommodationBooking
+        Validates updating an existing accommodation booking using a mock PUT request.
+        Ensures a status code 200 OK and correct update confirmation message is returned.
+
+    TestDeleteAccommodationBooking
+        Tests the deletion of an accommodation booking using a mock DELETE request.
+        Confirms a status code 200 OK and correct deletion confirmation message is received.
+
