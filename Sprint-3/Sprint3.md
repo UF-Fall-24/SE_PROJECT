@@ -56,3 +56,66 @@ Accommodation Booking Tests
 | DELETE | /accommodation_bookings/{id} | Delete an accommodation booking by ID.                                      |
 
 
+Sprint 3: Backend API Documentation
+NAME	UFID
+Kopparla Varshini	22060396
+Karthik Karnam      37476457
+
+Accommodation Booking API
+
+    Create Accommodation Booking
+        Endpoint: POST /accommodation_bookings
+        Description: Adds a new accommodation booking record.
+        Authentication: Requires JWT token.
+        Request Headers: Authorization: Bearer <token> 
+        Content-Type: application/json 
+        Request Body Example:
+            {
+                "booking_id": 25,
+                "accommodation_id": 10
+            }
+        Response Example (Success - 201 Created):
+            {
+            "id": 5,
+            "booking_id": 25,
+            "accommodation_id": 10
+            }
+        Error Responses:
+            400 Bad Request → Missing or invalid fields.
+            404 Not Found → Booking ID or Accommodation ID does not exist.
+            500 Internal Server Error → Database insertion error.
+        Edge Cases:
+            Missing Fields (400 Bad Request)
+            Invalid Foreign Keys (404 Not Found)
+            Duplicate Booking Handling (500 Internal Server Error)
+            
+    Update Accommodation Booking
+        Endpoint: PUT /accommodation_bookings/{id}
+        Description: Updates an existing accommodation booking by ID.
+        Authentication: Requires JWT token.
+        Request Body Example:
+            {
+            "booking_id": 25,
+            "accommodation_id": 12
+            }
+        Response Example (Success - 200 OK):
+            {
+            "message": "Accommodation booking updated successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid booking ID or request body.
+            404 Not Found → Accommodation booking not found.
+            500 Internal Server Error → Error during update operation.
+
+    Delete Accommodation Booking
+        Endpoint: DELETE /accommodation_bookings/{id}
+        Description: Deletes an accommodation booking by its ID.
+        Authentication: Requires JWT token.
+        Response Example (Success - 200 OK):
+            {
+            "message": "Accommodation booking deleted successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid booking ID format.
+            404 Not Found → Booking record not found.
+            500 Internal Server Error → Error during deletion process.
