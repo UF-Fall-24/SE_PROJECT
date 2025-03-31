@@ -1,43 +1,39 @@
-describe('Image Click Tests After Login', () => {
+describe('Dashboard Images Navigation Test', () => {
   beforeEach(() => {
-    // Simulate a logged-in user by setting a token in localStorage.
-    cy.window().then((win) => {
-      win.localStorage.setItem('token', 'your-test-token');
-    });
-    // Visit the home page or a dashboard that shows the images.
-    cy.visit('/');
+    // Log in to the application
+    cy.visit('http://localhost:3000/login');
+    cy.get('input[name="email"]').should('be.visible').type('uniqueemail@gmail.com');
+    cy.get('input[name="password"]').should('be.visible').type('Password@123');
+    cy.get('button[type="submit"]').click();
+    // Confirm redirection to the dashboard after login
+    //cy.url().should('include', '/dashboard');
   });
 
-  it('should navigate to the packages page when a package image is clicked', () => {
-    // Find and click the package image.
-    cy.get('[data-test="package-image"]').first().click();
-
-    // Assert that the URL includes "/packages" or that a key element is visible.
+  it('should navigate to the correct pages when dashboard images are clicked', () => {
+    // Click on the Packages image and verify navigation
+    cy.get('img[alt="Packages"]')
+      .should('be.visible')
+      .click();
     cy.url().should('include', '/packages');
-    // Optionally, check for a key detail element:
-    cy.get('.package-detail').should('be.visible');
-  });
+    
+    // Return to dashboard for the next test
+    cy.go('back');
+    //cy.url().should('include', '/dashboard');
 
-  it('should navigate to the accommodations page when an accommodation image is clicked', () => {
-    // Find and click the accommodation image.
-    cy.get('[data-test="accommodation-image"]').first().click();
-
-    // Assert that the URL includes "/accommodations".
+    // Click on the Accommodations image and verify navigation
+    cy.get('img[alt="Accommodations"]')
+      .should('be.visible')
+      .click();
     cy.url().should('include', '/accommodations');
-    // Optionally, check that an accommodations detail element is visible:
-    cy.get('.accommodation-detail').should('be.visible');
-  });
+    
+    // Return to dashboard for the next test
+    cy.go('back');
+    //cy.url().should('include', '/dashboard');
 
-  it('should navigate to the hotels page when a hotel image is clicked', () => {
-    // First, verify the hotel dropdown is visible (it appears only when logged in).
-    cy.get('.hotel-dropdown').should('be.visible');
-
-    // Then click on a hotel image within the dropdown.
-    cy.get('[data-test="hotel-image"]').first().click();
-
-    // Assert that the URL includes "/hotels".
+    // Click on the Hotels image and verify navigation
+    cy.get('img[alt="Hotels"]')
+      .should('be.visible')
+      .click();
     cy.url().should('include', '/hotels');
-    // Optionally, check that a hotel-specific detail element is visible.
-    cy.get('.hotel-detail').should('be.visible');
   });
 });

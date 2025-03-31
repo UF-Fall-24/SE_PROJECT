@@ -37,7 +37,7 @@ const AccommodationHotels = () => {
               <th>Rating</th>
               <th>Room Type</th>
               <th>Price per Night ($)</th>
-              <th>Select</th>
+              <th>Selection</th>
             </tr>
           </thead>
           <tbody>
