@@ -1,63 +1,57 @@
-// src/components/Home.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
-import flightImage from './flight.jpg';
-import carImage from './car.jpeg';
-import busImage from './bus.jpg';
-import HotelDropdown from './HotelDropdown';
 
 const Home = () => {
-  // Check if a token exists (indicating the user is logged in)
+  // Use localStorage to check if a user is logged in
   const token = localStorage.getItem('token');
 
-  // Only use the carousel if the user is not logged in.
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [flightImage, carImage, busImage];
+  // Live clock state
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    // Only set up the carousel interval if no token (user not logged in)
-    if (!token) {
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 3000); // Change image every 3 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [token, images.length]);
+    // Update the clock every second
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="home-container">
-      {/* Show carousel and auth links only when user is not logged in */}
-      {!token && (
-        <>
-          <div className="image-carousel">
-            {images.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt={`Travel ${index + 1}`}
-                className={index === currentImageIndex ? 'active' : ''}
-              />
-            ))}
-          </div>
-          <div className="auth-links">
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </div>
-        </>
-      )}
-      {/* Always show welcome text */}
-      <div className="welcome-text">
-        <h1>Welcome to Book Ease</h1>
-        <p>Your one-stop solution for all your travel needs!</p>
+      {/* Full-Screen Hero Section (unchanged) */}
+      <div className="hero-section">
+        <div className="hero-overlay">
+          <h1>Welcome to Book Ease</h1>
+          <p>Your one-stop solution for all your travel needs!</p>
+          <p className="live-clock">Current Time: {currentTime.toLocaleTimeString()}</p>
+        </div>
       </div>
-      {/* Show HotelDropdown only when user is logged in */}
+
+      {/* Lower Content for Non-Logged-in Users */}
+      {!token && (
+        <div className="auth-landing-section">
+          <div className="auth-box new-user">
+            <h2>New to Book Ease?</h2>
+            <p>
+              Create an account to unlock exclusive deals, personalized recommendations, and easy itinerary management.
+            </p>
+            <Link to="/register" className="btn">Create Account</Link>
+          </div>
+          <div className="auth-box returning-user">
+            <h2>Already a Member?</h2>
+            <p>
+              Sign in to manage your bookings, track travel history, and explore more travel options.
+            </p>
+            <Link to="/login" className="btn">Sign In</Link>
+          </div>
+        </div>
+      )}
+
+      {/* (Optional) Content for Logged-in Users */}
       {token && (
-        <div className="hotel-dropdown">
-          <HotelDropdown />
+        <div className="logged-in-content">
+          {/* For example, a hotel dropdown or user dashboard can be rendered here */}
+          <p>Welcome back! Access your dashboard below.</p>
+          {/* <HotelDropdown /> */}
         </div>
       )}
     </div>
@@ -65,4 +59,3 @@ const Home = () => {
 };
 
 export default Home;
-  

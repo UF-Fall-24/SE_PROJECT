@@ -1,63 +1,129 @@
-/* src/components/Home.css */
+/* Global Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Overall Home Container */
 .home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  width: 100vw;
+  overflow-x: hidden;
+  background: #f5f8fa;
+  font-family: 'Arial', sans-serif;
 }
 
-.image-carousel {
-  width: 100%;
-  height: 300px; /* Increased height for better visibility */
+/* ------------------------------
+   Full-Screen Hero Section
+------------------------------ */
+.hero-section {
   position: relative;
-  overflow: hidden;
-  margin-bottom: 20px;
+  width: 100vw;
+  height: 100vh;  /* Full viewport height */
+  background: url('flight.jpg') center/cover no-repeat;
+  background-color: #c9e4f8;  /* Fallback color */
 }
 
-.image-carousel img {
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.image-carousel img.active {
-  opacity: 1;
-}
-
-.welcome-text {
+  background: linear-gradient(rgba(20,90,160,0.5), rgba(30,150,200,0.5));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-bottom: 20px;
+  padding: 0 1rem;
+  animation: fadeInHero 1.5s ease-out;
 }
 
-.welcome-text h1 {
-  font-size: 2.5em;
+.hero-overlay h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.hero-overlay p {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.live-clock {
+  margin-top: 1rem;
+  color: #ffecb3;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeInHero {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ------------------------------
+   Lower Auth Landing Section
+------------------------------ */
+.auth-landing-section {
+  background: #f0f4f8;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Auth Box Style */
+.auth-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.auth-box:hover {
+  transform: translateY(-5px);
+}
+
+.auth-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
   color: #333;
 }
 
-.welcome-text p {
-  font-size: 1.2em;
+.auth-box p {
+  font-size: 1rem;
   color: #666;
+  margin-bottom: 1.5rem;
 }
 
-.auth-links {
-  display: flex;
-  gap: 20px; /* Increased gap for better spacing */
-}
-
-.auth-links a {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+/* Button Style */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #1e96c8;
+  color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.auth-links a:hover {
-  background-color: #0056b3;
+.btn:hover {
+  background-color: #1478a0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-overlay h1 {
+    font-size: 2.2rem;
+  }
+  .hero-overlay p {
+    font-size: 1.2rem;
+  }
 }
