@@ -1,55 +1,34 @@
-/* Global reset */
+/* Global Reset */
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Full-screen container with background image */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full vertical height */
+  width: 100%;       /* Ensure full width */
+  margin: 0;
+  padding: 0;
+
+  /* Use cover to fill the viewport, center to keep focal point centered */
   background: url('travel-bg.jpg') no-repeat center center;
   background-size: cover;
 }
 
-/* Full-screen container with travel background image */
-.login-container {
-   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url('travel-bg.jpg') no-repeat center center;
-  background-size: auto;
-}
 
-/* Gradient overlay for better readability */
-.login-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Adjust colors for your theme: here a dark blue overlay */
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
-  z-index: 1;
-}
-
-/* Login card styles */
+/* Centered login card */
 .login-card {
-  position: relative;
-  z-index: 2;
-  background: black;
-  backdrop-filter: blur(3px);
-  border-radius: 10px;
+  
   padding: 2rem;
+  border-radius: 8px;
   width: 350px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
-  animation: fadeIn 1s ease forwards;
-  opacity: 0;
-}
-
-/* Fade-in animation for login card */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
 }
 
 /* Heading style */
@@ -60,7 +39,7 @@ html, body {
 
 /* Error message style */
 .login-card .error {
-  color: red;
+  color: #ff6b6b;
   margin-bottom: 1rem;
 }
 
@@ -70,6 +49,7 @@ html, body {
   flex-direction: column;
 }
 
+/* Input fields styling */
 .login-card form input {
   margin-bottom: 1rem;
   padding: 0.75rem;
@@ -78,20 +58,21 @@ html, body {
   font-size: 1rem;
 }
 
+/* Login button styling */
 .login-card form button {
-  background-color: #2f80ed;
+  background-color: #1e96c8;
   color: #fff;
   padding: 0.75rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: bold;
   transition: background 0.3s ease;
 }
 
 .login-card form button:hover {
-  background-color: #2563a8;
+  background-color: #1478a0;
 }
 
 /* Responsive adjustments */

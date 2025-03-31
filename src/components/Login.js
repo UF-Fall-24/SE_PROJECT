@@ -4,11 +4,11 @@ import './Login.css';
 
 const Login = ({ onLogin }) => {
   useEffect(() => {
-    console.log("🛠 Debug: onLogin function received in Login.js?", onLogin);
-  }, []);
+    console.log("Debug: onLogin function received in Login.js?", onLogin);
+  }, [onLogin]);
 
   if (!onLogin) {
-    console.error("❌ Error: `onLogin` function is not passed to Login.js");
+    console.error("Error: `onLogin` function is not passed to Login.js");
   }
 
   const [email, setEmail] = useState('');
