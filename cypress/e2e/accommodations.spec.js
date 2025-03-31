@@ -22,6 +22,6 @@ describe('Accommodations Navigation Test', () => {
 
     // Option 2: Alternatively, check for text or an element that signifies the available accommodations list.
     // (For example, a heading or a container with the text "Available Accommodations")
-    cy.contains('Available Accommodations').should('be.visible');
+    cy.contains('Available Accommodationsss').should('be.visible');
   });
 });
