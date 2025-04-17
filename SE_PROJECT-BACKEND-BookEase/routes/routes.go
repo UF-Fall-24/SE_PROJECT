@@ -67,6 +67,8 @@ func SetupRoutes() *mux.Router {
 	protected.HandleFunc("/accommodation_bookings/{booking_id}", controllers.UpdateAccommodationBooking).Methods("PUT")
 	protected.HandleFunc("/accommodation_bookings/{booking_id}", controllers.DeleteAccommodationBooking).Methods("DELETE")
 
+	// Price endpoints
+	protected.HandleFunc("/prices", controllers.GetTotalPrice).Methods("GET") // Get price based on accommodation ID and package ID
 
 	return router
 }
