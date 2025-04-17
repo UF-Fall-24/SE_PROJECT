@@ -11,23 +11,25 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// CreateBooking inserts a new booking (including optional payment_id).
+// CreateBooking inserts a new booking (including accommodation_booking_id).
 func CreateBooking(w http.ResponseWriter, r *http.Request) {
 	var booking models.Booking
 	if err := json.NewDecoder(r.Body).Decode(&booking); err != nil {
 		http.Error(w, "Invalid request payload", http.StatusBadRequest)
 		return
 	}
+
 	if err := booking.Create(); err != nil {
 		log.Println("❌ Error creating booking:", err)
 		http.Error(w, "Error creating booking", http.StatusInternalServerError)
 		return
 	}
+
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(booking)
 }
 
-// GetBookingsByUser fetches bookings for a user, including payment_status.
+// GetBookingsByUser fetches bookings for a user, including payment status and accommodation booking ID.
 func GetBookingsByUser(w http.ResponseWriter, r *http.Request) {
 	userID, err := strconv.Atoi(mux.Vars(r)["user_id"])
 	if err != nil {
@@ -37,7 +39,7 @@ func GetBookingsByUser(w http.ResponseWriter, r *http.Request) {
 
 	query := `
         SELECT 
-            b.id, b.user_id, b.package_id, b.accommodation_id, 
+            b.id, b.user_id, b.package_id, b.accommodation_booking_id,
             b.payment_id, p.payment_status,
             b.booking_date, b.status
         FROM bookings b
@@ -55,7 +57,7 @@ func GetBookingsByUser(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var b models.Booking
 		if err := rows.Scan(
-			&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+			&b.ID, &b.UserID, &b.PackageID, &b.AccommodationBookingID,
 			&b.PaymentID, &b.PaymentStatus,
 			&b.BookingDate, &b.Status,
 		); err != nil {
@@ -69,7 +71,7 @@ func GetBookingsByUser(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(bookings)
 }
 
-// GetBooking retrieves a booking by its numeric ID, including payment_status.
+// GetBooking retrieves a single booking by its numeric ID.
 func GetBooking(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(mux.Vars(r)["id"])
 	if err != nil {
@@ -79,7 +81,7 @@ func GetBooking(w http.ResponseWriter, r *http.Request) {
 
 	query := `
         SELECT 
-            b.id, b.user_id, b.package_id, b.accommodation_id, 
+            b.id, b.user_id, b.package_id, b.accommodation_booking_id,
             b.payment_id, p.payment_status,
             b.booking_date, b.status
         FROM bookings b
@@ -87,7 +89,7 @@ func GetBooking(w http.ResponseWriter, r *http.Request) {
         WHERE b.id = ?`
 	var b models.Booking
 	if err := config.DB.QueryRow(query, id).Scan(
-		&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+		&b.ID, &b.UserID, &b.PackageID, &b.AccommodationBookingID,
 		&b.PaymentID, &b.PaymentStatus,
 		&b.BookingDate, &b.Status,
 	); err != nil {
@@ -100,7 +102,7 @@ func GetBooking(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(b)
 }
 
-// CancelBooking sets booking status to "Canceled".
+// CancelBooking sets the booking status to "Canceled".
 func CancelBooking(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(mux.Vars(r)["id"])
 	if err != nil {

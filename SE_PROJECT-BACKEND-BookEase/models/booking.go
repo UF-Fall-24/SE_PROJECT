@@ -6,23 +6,23 @@ import (
 	"time"
 )
 
-// Booking struct represents a booking record, including linked payment status.
+// Booking struct represents a booking record, including linked payment and accommodation booking IDs.
 type Booking struct {
-	ID              int       `json:"id"`
-	UserID          int       `json:"user_id"`
-	PackageID       int       `json:"package_id"`
-	AccommodationID *int      `json:"accommodation_id,omitempty"`
-	PaymentID       *int      `json:"payment_id,omitempty"`
-	PaymentStatus   *string   `json:"payment_status,omitempty"`
-	BookingDate     time.Time `json:"booking_date"`
-	Status          string    `json:"status"`
+	ID                     int       `json:"id"`
+	UserID                 int       `json:"user_id"`
+	PackageID              int       `json:"package_id"`
+	AccommodationBookingID *string   `json:"accommodation_booking_id,omitempty"`
+	PaymentID              *int      `json:"payment_id,omitempty"`
+	PaymentStatus          *string   `json:"payment_status,omitempty"`
+	BookingDate            time.Time `json:"booking_date"`
+	Status                 string    `json:"status"`
 }
 
 // Create inserts a new booking into the database.
 func (b *Booking) Create() error {
-	query := `INSERT INTO bookings (user_id, package_id, accommodation_id, payment_id, status)
+	query := `INSERT INTO bookings (user_id, package_id, accommodation_booking_id, payment_id, status)
 		      VALUES (?, ?, ?, ?, ?)`
-	result, err := config.DB.Exec(query, b.UserID, b.PackageID, b.AccommodationID, b.PaymentID, "Confirmed")
+	result, err := config.DB.Exec(query, b.UserID, b.PackageID, b.AccommodationBookingID, b.PaymentID, "Confirmed")
 	if err != nil {
 		log.Println("❌ Error creating booking:", err)
 		return err
@@ -41,10 +41,10 @@ func (b *Booking) Create() error {
 	return nil
 }
 
-// GetBookingsByUser retrieves all bookings for a given user, including payment status.
+// GetBookingsByUser retrieves all bookings for a given user, including payment and accommodation status.
 func GetBookingsByUser(userID int) ([]Booking, error) {
 	query := `SELECT 
-		b.id, b.user_id, b.package_id, b.accommodation_id,
+		b.id, b.user_id, b.package_id, b.accommodation_booking_id,
 		b.payment_id, p.payment_status,
 		b.booking_date, b.status
 	  FROM bookings b
@@ -61,7 +61,7 @@ func GetBookingsByUser(userID int) ([]Booking, error) {
 	for rows.Next() {
 		var b Booking
 		err := rows.Scan(
-			&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+			&b.ID, &b.UserID, &b.PackageID, &b.AccommodationBookingID,
 			&b.PaymentID, &b.PaymentStatus,
 			&b.BookingDate, &b.Status,
 		)
@@ -75,10 +75,10 @@ func GetBookingsByUser(userID int) ([]Booking, error) {
 	return bookings, nil
 }
 
-// GetBookingByID retrieves a booking by its ID, including payment status.
+// GetBookingByID retrieves a booking by its ID, including payment and accommodation status.
 func GetBookingByID(bookingID int) (*Booking, error) {
 	query := `SELECT 
-		b.id, b.user_id, b.package_id, b.accommodation_id,
+		b.id, b.user_id, b.package_id, b.accommodation_booking_id,
 		b.payment_id, p.payment_status,
 		b.booking_date, b.status
 	  FROM bookings b
@@ -86,7 +86,7 @@ func GetBookingByID(bookingID int) (*Booking, error) {
 	  WHERE b.id = ?`
 	var b Booking
 	err := config.DB.QueryRow(query, bookingID).Scan(
-		&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+		&b.ID, &b.UserID, &b.PackageID, &b.AccommodationBookingID,
 		&b.PaymentID, &b.PaymentStatus,
 		&b.BookingDate, &b.Status,
 	)
