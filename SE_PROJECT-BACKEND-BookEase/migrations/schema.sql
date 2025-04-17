@@ -81,16 +81,7 @@ CREATE TABLE IF NOT EXISTS hotels (
 
 
 
-CREATE TABLE IF NOT EXISTS vehicles (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    vehicle_type VARCHAR(100) NOT NULL,
-    model VARCHAR(100),
-    capacity INT,
-    price DECIMAL(10,2) NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+
 
 
 CREATE TABLE IF NOT EXISTS accommodations (
@@ -113,15 +104,15 @@ CREATE TABLE IF NOT EXISTS bookings (
     accommodation_id INT DEFAULT NULL,
     vehicle_id INT DEFAULT NULL,
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'Pending',
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (package_id) REFERENCES packages(id),
     FOREIGN KEY (accommodation_id) REFERENCES accommodations(id),
-    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
+    FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
 
+
 CREATE TABLE IF NOT EXISTS payments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
     booking_id INT NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     payment_method VARCHAR(50),
