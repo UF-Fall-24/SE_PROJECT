@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"book-ease-backend/config"
 	"book-ease-backend/models"
 	"encoding/json"
 	"log"
@@ -10,84 +11,115 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// CreateBooking handles inserting a new booking into the database.
+// CreateBooking inserts a new booking (including optional payment_id).
 func CreateBooking(w http.ResponseWriter, r *http.Request) {
 	var booking models.Booking
 	if err := json.NewDecoder(r.Body).Decode(&booking); err != nil {
 		http.Error(w, "Invalid request payload", http.StatusBadRequest)
 		return
 	}
-
-	// Insert booking into database
-	err := booking.Create()
-	if err != nil {
+	if err := booking.Create(); err != nil {
 		log.Println("❌ Error creating booking:", err)
 		http.Error(w, "Error creating booking", http.StatusInternalServerError)
 		return
 	}
-
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(booking)
 }
 
-// GetBookingsByUser retrieves all bookings for a given user.
+// GetBookingsByUser fetches bookings for a user, including payment_status.
 func GetBookingsByUser(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	userID, err := strconv.Atoi(vars["user_id"])
+	userID, err := strconv.Atoi(mux.Vars(r)["user_id"])
 	if err != nil {
 		http.Error(w, "Invalid user ID", http.StatusBadRequest)
 		return
 	}
 
-	bookings, err := models.GetBookingsByUser(userID)
+	query := `
+        SELECT 
+            b.id, b.user_id, b.package_id, b.accommodation_id, 
+            b.payment_id, p.payment_status,
+            b.booking_date, b.status
+        FROM bookings b
+        LEFT JOIN payments p ON b.payment_id = p.payment_id
+        WHERE b.user_id = ?`
+	rows, err := config.DB.Query(query, userID)
 	if err != nil {
-		log.Println("❌ Error retrieving bookings:", err)
+		log.Println("❌ Error querying bookings:", err)
 		http.Error(w, "Error retrieving bookings", http.StatusInternalServerError)
 		return
 	}
+	defer rows.Close()
 
+	var bookings []models.Booking
+	for rows.Next() {
+		var b models.Booking
+		if err := rows.Scan(
+			&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+			&b.PaymentID, &b.PaymentStatus,
+			&b.BookingDate, &b.Status,
+		); err != nil {
+			log.Println("❌ Error scanning booking row:", err)
+			continue
+		}
+		bookings = append(bookings, b)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(bookings)
 }
 
-// GetBooking retrieves a single booking by its ID.
+// GetBooking retrieves a booking by its numeric ID, including payment_status.
 func GetBooking(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	bookingID, err := strconv.Atoi(vars["id"])
+	id, err := strconv.Atoi(mux.Vars(r)["id"])
 	if err != nil {
 		http.Error(w, "Invalid booking ID", http.StatusBadRequest)
 		return
 	}
 
-	booking, err := models.GetBookingByID(bookingID)
-	if err != nil {
+	query := `
+        SELECT 
+            b.id, b.user_id, b.package_id, b.accommodation_id, 
+            b.payment_id, p.payment_status,
+            b.booking_date, b.status
+        FROM bookings b
+        LEFT JOIN payments p ON b.payment_id = p.payment_id
+        WHERE b.id = ?`
+	var b models.Booking
+	if err := config.DB.QueryRow(query, id).Scan(
+		&b.ID, &b.UserID, &b.PackageID, &b.AccommodationID,
+		&b.PaymentID, &b.PaymentStatus,
+		&b.BookingDate, &b.Status,
+	); err != nil {
 		log.Println("❌ Error retrieving booking:", err)
 		http.Error(w, "Booking not found", http.StatusNotFound)
 		return
 	}
 
-	json.NewEncoder(w).Encode(booking)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(b)
 }
 
-// CancelBooking cancels a booking by updating its status.
+// CancelBooking sets booking status to "Canceled".
 func CancelBooking(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	bookingID, err := strconv.Atoi(vars["id"])
+	id, err := strconv.Atoi(mux.Vars(r)["id"])
 	if err != nil {
 		http.Error(w, "Invalid booking ID", http.StatusBadRequest)
 		return
 	}
 
-	booking, err := models.GetBookingByID(bookingID)
+	b, err := models.GetBookingByID(id)
 	if err != nil {
 		http.Error(w, "Booking not found", http.StatusNotFound)
 		return
 	}
 
-	err = booking.Cancel()
-	if err != nil {
+	if err := b.Cancel(); err != nil {
+		log.Println("❌ Error canceling booking:", err)
 		http.Error(w, "Error canceling booking", http.StatusInternalServerError)
 		return
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{"message": "Booking canceled successfully"})
 }
