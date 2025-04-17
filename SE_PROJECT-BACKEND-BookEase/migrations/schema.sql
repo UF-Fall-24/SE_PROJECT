@@ -101,24 +101,26 @@ CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     package_id INT NOT NULL,
-    accommodation_id INT DEFAULT NULL,
-    vehicle_id INT DEFAULT NULL,
+    accommodation_booking_id VARCHAR(20) NOT NULL,
+
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (package_id) REFERENCES packages(id),
-    FOREIGN KEY (accommodation_id) REFERENCES accommodations(id),
+    FOREIGN KEY (accommodation_booking_id) REFERENCES accommodation_bookings(accommodation_booking_id),
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
 
 
 CREATE TABLE IF NOT EXISTS payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
-    booking_id INT NOT NULL,
+    package_booking_id VARCHAR(20) NOT NULL,
+    accommodation_booking_id VARCHAR(20) NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     payment_method VARCHAR(50),
     payment_status VARCHAR(50),
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (booking_id) REFERENCES bookings(id)
+    FOREIGN KEY (package_booking_id) REFERENCES package_bookings(package_booking_id),
+    FOREIGN KEY (accommodation_booking_id) REFERENCES accommodation_bookings(accommodation_booking_id)
 );
 
 
