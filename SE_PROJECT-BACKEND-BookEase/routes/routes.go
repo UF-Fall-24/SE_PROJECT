@@ -70,5 +70,13 @@ func SetupRoutes() *mux.Router {
 	// Price endpoints
 	protected.HandleFunc("/prices", controllers.GetTotalPrice).Methods("GET") // Get price based on accommodation ID and package ID
 
+	// Payment Routes
+	router.HandleFunc("/payments", controllers.CreatePayment).Methods("POST")
+	router.HandleFunc("/payments", controllers.GetAllPayments).Methods("GET")
+	router.HandleFunc("/payments/{id}", controllers.GetPayment).Methods("GET")
+	router.HandleFunc("/payments/{id}", controllers.UpdatePayment).Methods("PUT")
+	router.HandleFunc("/payments/{id}", controllers.DeletePayment).Methods("DELETE")
+
+
 	return router
 }
