@@ -128,12 +128,19 @@ Price Tests
 | PUT    | /payments/{id}      | Update an existing payment record by ID.                                   |
 | DELETE | /payments/{id}      | Delete a payment record by its ID.                                         |
 
+### Prices Endpoints
+
+| Method | Endpoint            | Description                                                                |
+| ------ | --------------------| -------------------------------------------------------------------------- |
+| GET    | /prices/total       | Compute and return the total price by combining package and accommodation. |
+
+
 Sprint 4: Backend API Documentation
 NAME	UFID
 Kopparla Varshini	22060396
 Karthik Karnam      37476457
 
-Package Booking API
+Payment Booking API
 
     Create Payment
         Endpoint: POST /payments
@@ -227,3 +234,28 @@ Package Booking API
             400 Bad Request → Invalid ID format.
             404 Not Found → Payment record not found.
             500 Internal Server Error → Deletion failure.
+
+Prices API
+
+    Get Total Price
+        Endpoint: GET /prices/total
+        Description: Calculates and returns the total price by summing the base package price and optional accommodation cost.
+        Authentication: Public (no token required).
+        Query Parameters:
+            package_id (required) — ID of the selected package.
+            accommodation_id (optional) — ID of the accommodation to include in total price.
+        Example Request URL:
+            GET /prices/total?package_id=5&accommodation_id=10
+        Response Example (Success - 200 OK):
+            {
+            "total_price": 1350.00
+            }
+        Error Responses:
+            400 Bad Request → package_id is missing or invalid.
+            404 Not Found → No package found with the given ID.
+            200 OK → If accommodation_id is invalid or not found, only package price is returned (no error thrown).
+        Edge Cases:
+            Missing package_id → 400 Bad Request
+            Non-existent package_id → 404 Not Found
+            Non-existent or invalid accommodation_id → Total price = package price only
+            Invalid query values (non-numeric) → 400 Bad Request
