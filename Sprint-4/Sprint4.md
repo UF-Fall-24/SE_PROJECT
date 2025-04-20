@@ -44,6 +44,36 @@ DeletePayment
         If successful, returns a confirmation message with 200 OK.
         Returns 500 Internal Server Error if deletion fails.
 
+Prices (prices.go)
+This file handles the computation of dynamic total prices by aggregating package and optional accommodation costs.
+
+    GetTotalPrice
+        Responsibility:Computes and returns the total price of a travel booking by summing the base package price and the optional accommodation price (if provided).
+        Workflow:
+        Read and Validate Query Parameters:
+            Extracts package_id (required) and accommodation_id (optional) from query parameters.
+            Validates if package_id is a valid integer. If missing or invalid, returns a 400 Bad Request.
+        Fetch Package Price:
+            Queries the database to fetch package_price from the packages table using the provided package_id.
+            If the package is not found, returns a 404 Not Found.
+        Optionally Fetch Accommodation Price:
+            If accommodation_id is provided and valid, attempts to fetch price from the accommodations table.
+            If accommodation is not found or ID is invalid, the price is ignored silently (fails gracefully).
+        Compute Total:
+            Adds package price and accommodation price (if found) to calculate the final total.
+        Respond with Total Price:
+        Returns a JSON response like:
+            {
+            "total_price": 850.00
+            }
+        Content-Type: application/json
+        Status Code: 200 OK
+        Error Handling:
+            400 Bad Request: If package_id is missing or not an integer.
+            404 Not Found: If no package with the given ID exists.
+            200 OK: If successful, regardless of accommodation ID validity.
+
+
 **List of unit tests for the backend APIs**
 
 Payment Tests
