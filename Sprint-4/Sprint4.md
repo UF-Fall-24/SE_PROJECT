@@ -97,6 +97,25 @@ Payment Tests
         Validates the deletion of a payment record using a mock DELETE request.
         Checks that the response returns 200 OK and confirms deletion with a message "Payment deleted successfully".
 
+Price Tests
+    TestGetTotalPrice_WithAccommodation
+        Verifies that the total price is correctly calculated when both package_id and accommodation_id are provided in the query.
+        Ensures the response includes a 200 OK status and the computed total is accurate.
+
+    TestGetTotalPrice_WithoutAccommodation
+        Validates that the total price is returned correctly using only package_id, without including accommodation cost.
+        Confirms that the status code is 200 OK and the JSON response includes only the package price.
+
+    TestGetTotalPrice_InvalidPackageID
+        Tests behavior when package_id is missing or invalid (e.g., a string or empty value).
+        Expects a 400 Bad Request status and validates the error message in the response.
+
+    TestGetTotalPrice_PackageNotFound
+        Simulates the scenario where a non-existent package_id is used.
+        Verifies that the API returns a 404 Not Found response.
+
+
+
 *Documentation of API's*
 
 ### Payment Endpoints
