@@ -44,3 +44,38 @@ DeletePayment
         If successful, returns a confirmation message with 200 OK.
         Returns 500 Internal Server Error if deletion fails.
 
+**List of unit tests for the backend APIs**
+
+Payment Tests
+    TestCreatePayment
+        Verifies that a new payment can be created successfully using a mock POST request.
+        Ensures a status code 201 Created and checks for the correct payment object in the response body.
+
+    TestGetAllPayments
+        Validates the retrieval of all payment records using a mock GET request.
+        Confirms that the status code returned is 200 OK and the response is a JSON array.
+
+    TestGetPayment
+        Checks the retrieval of a specific payment record by ID.
+        Ensures that a mock GET request returns status code 200 OK and a valid payment JSON object.
+
+    TestUpdatePayment
+        Tests the update of an existing payment using a mock PUT request.
+        Confirms that the response includes status 200 OK and the message "Payment updated successfully".
+
+    TestDeletePayment
+        Validates the deletion of a payment record using a mock DELETE request.
+        Checks that the response returns 200 OK and confirms deletion with a message "Payment deleted successfully".
+
+*Documentation of API's*
+
+### Payment Endpoints
+
+| Method | Endpoint            | Description                                                                |
+| ------ | --------------------| -------------------------------------------------------------------------- |
+| POST   | /payments           | Create a new payment. Inserts a new payment record into the database.      |
+| GET    | /payments           | Retrieve all payments. Returns a list of all recorded payments.            |
+| GET    | /payments/{id}      | Retrieve a specific payment record by its ID.                              |
+| PUT    | /payments/{id}      | Update an existing payment record by ID.                                   |
+| DELETE | /payments/{id}      | Delete a payment record by its ID.                                         |
+
