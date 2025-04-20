@@ -79,3 +79,102 @@ Payment Tests
 | PUT    | /payments/{id}      | Update an existing payment record by ID.                                   |
 | DELETE | /payments/{id}      | Delete a payment record by its ID.                                         |
 
+Sprint 4: Backend API Documentation
+NAME	UFID
+Kopparla Varshini	22060396
+Karthik Karnam      37476457
+
+Package Booking API
+
+    Create Payment
+        Endpoint: POST /payments
+        Description: Adds a new payment record linked to an existing booking.
+        Authentication: Requires JWT token.
+        Request Headers:
+            Authorization: Bearer <token>
+            Content-Type: application/json
+        Request Body Example:
+            {
+            "booking_id": 25,
+            "amount": 750.00,
+            "payment_method": "Credit Card",
+            "payment_status": "Paid"
+            }
+        Response Example (Success - 201 Created):
+            {
+            "id": 12,
+            "booking_id": 25,
+            "amount": 750.00,
+            "payment_method": "Credit Card",
+            "payment_status": "Paid"
+            }
+        Error Responses:
+            400 Bad Request → Missing or invalid fields.
+            404 Not Found → Booking ID does not exist.
+            500 Internal Server Error → Database insertion error.
+        Edge Cases:
+            Missing Fields (400 Bad Request)
+            Invalid Booking Reference (404 Not Found)
+            Payment Already Exists (500 Internal Server Error)
+
+    Get All Payments
+        Endpoint: GET /payments
+        Description: Retrieves all payments in the system.
+        Authentication: Requires JWT token.
+        Response Example (Success - 200 OK):
+            [
+            {
+                "id": 12,
+                "booking_id": 25,
+                "amount": 750.00,
+                "payment_method": "Credit Card",
+                "payment_status": "Paid"
+            }
+            ]
+
+    Get Payment by ID
+        Endpoint: GET /payments/{id}
+        Description: Retrieves a specific payment record by its ID.
+        Authentication: Requires JWT token.
+        Response Example (Success - 200 OK):
+            {
+            "id": 12,
+            "booking_id": 25,
+            "amount": 750.00,
+            "payment_method": "Credit Card",
+            "payment_status": "Paid"
+            }
+        Error Responses:
+            400 Bad Request → Invalid payment ID format.
+            404 Not Found → Payment record not found.
+
+    Update Payment
+        Endpoint: PUT /payments/{id}
+        Description: Updates fields of an existing payment record.
+        Authentication: Requires JWT token.
+        Request Body Example:
+            {
+            "amount": 800.00,
+            "payment_method": "UPI",
+            "payment_status": "Paid"
+            }
+        Response Example (Success - 200 OK):
+            {
+            "message": "Payment updated successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid request payload or ID.
+            500 Internal Server Error → Error during update.
+
+    Delete Payment
+        Endpoint: DELETE /payments/{id}
+        Description: Deletes a payment record by ID.
+        Authentication: Requires JWT token.
+        Response Example (Success - 200 OK):
+            {
+            "message": "Payment deleted successfully"
+            }
+        Error Responses:
+            400 Bad Request → Invalid ID format.
+            404 Not Found → Payment record not found.
+            500 Internal Server Error → Deletion failure.
