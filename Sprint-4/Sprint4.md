@@ -1,3 +1,62 @@
+# Frontend: Sprint 4 Documentation
+
+**Team Members**  
+- Prathima Dodda — Frontend
+- Sai Preethi Kota — Frontend
+- Varshini Kopparla -- Backend
+- Karthik Karnam -- Backend
+
+---
+
+## 1. Sprint 4 Objectives
+
+- Integrate **Prices API** (backend) into the payment flow  
+- Build a **Payment** page that calculates & displays dynamic totals  
+- Pass `packageId` (and optional `accommodationId`) via React Router  
+- Persist & supply the JWT in every API call  
+- Add unit & end‑to‑end tests covering the new flow  
+- Update README/documentation and demo scripts  
+
+---
+
+## 2. Completed Work
+
+### 2.1 Feature: Payment Page Integration  
+- **`Payment.jsx`**  
+  - Mounted at route `/payment/:packageId/:accommodationId?`  
+  - On mount, reads `packageId` & `accommodationId` via `useParams()`  
+  - Fetches `GET http://localhost:8080/prices?package_id=…(&accommodation_id=…)`  
+  - Attaches `Authorization: Bearer <token>` from `localStorage`  
+  - Renders loading, error, and total price state  
+- **`PackageDetails.jsx`**  
+  - **Payment** button now navigates to `/payment/${id}`  
+  - **Book Accommodation** button navigates to `/accommodation-hotels/${id}`  
+
+### 2.2 API Consumption Matrix
+
+| Endpoint                                        | HTTP | Component                   | Purpose                                   |
+|-------------------------------------------------|------|-----------------------------|-------------------------------------------|
+| `GET /packages/:id`                             | GET  | `PackageDetails.jsx`        | Fetch package metadata                    |
+| `GET /hotels`                                   | GET  | `AccommodationHotels.jsx`   | List available hotels                     |
+| `POST /accommodations`                          | POST | `AccommodationHotels.jsx`   | Book a hotel and get back `accommodationId` |
+| **`GET /prices?package_id=&…`**                 | GET  | `Payment.jsx`               | Compute package + optional hotel total     |
+
+---
+
+## 3. Frontend Unit Tests
+
+All tests live under `src/tests/`.
+
+| Test File                       | Covered Component  | Description                                          |
+|---------------------------------|--------------------|------------------------------------------------------|
+| `Payment.test.jsx`              | `Payment.jsx`      | Mocks fetch; verifies loading state & total display. |
+| `PackageDetails.test.jsx`       | `PackageDetails.jsx` | Verifies that “Payment” button navigates with ID.   |
+| `AccommodationHotels.test.jsx`  | `AccommodationHotels.jsx` | Mocks hotel list & booking flow.                 |
+
+**Run all unit tests:**
+```bash
+npm test
+
 **Detailed explanation of the completed work implemented in the backend**
 
 Payments (payment.go)
