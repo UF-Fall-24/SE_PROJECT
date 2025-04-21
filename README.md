@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/UF-Fall-24/SE_PROJECT/main/logo.svg" alt="Book Ease Logo" width="120" />
+  <img src="/src/logo.svg" alt="Book Ease Logo" width="120" />
   <h1 align="center">Book Ease</h1>
   <p align="center">
     <em>Your one‑stop travel booking app — flights, hotels & more</em>
