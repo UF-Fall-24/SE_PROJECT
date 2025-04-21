@@ -27,12 +27,6 @@
 - 🔒 Securely register & authenticate
 - 📱 Enjoy a responsive, mobile‑friendly React UI
 
-This Sprint 4 update includes:
-- Complete **homepage redesign** and navigation
-- **Dynamic price** API integration (`GET /prices`)
-- **Unit tests** for core components & **Cypress E2E** scenarios
-- Updated **API documentation** for backend collaborators
-
 ---
 
 ## Team & Roles
