@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="/src/logo.svg" alt="Book Ease Logo" width="120" />
   <h1 align="center">Book Ease</h1>
   <p align="center">
     <em>Your one‑stop travel booking app — flights, hotels & more</em>
