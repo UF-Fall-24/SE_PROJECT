@@ -21,7 +21,7 @@
 ---
 
 ## Project Overview
-**Book Ease** centralizes travel services—flights, hotels, packages—into a single intuitive platform. Users can:
+**Book Ease** centralizes travel services—hotels, packages—into a single intuitive platform. Users can:
 - 🔍 Search for travel packages and hotels by destination and dates
 - 💰 Instantly calculate combined package + accommodation pricing
 - 🔒 Securely register & authenticate
