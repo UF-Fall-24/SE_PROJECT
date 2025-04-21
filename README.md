@@ -18,8 +18,6 @@
 6. [🧪 Testing](#-testing)
 7. [📁 Project Structure](#-project-structure)
 8. [🤝 Contributing](#-contributing)
-9. [📜 License](#-license)
-
 ---
 
 ## Project Overview
