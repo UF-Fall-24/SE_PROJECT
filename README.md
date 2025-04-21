@@ -1,6 +1,6 @@
 <p align="center">
   <h1>📖 Book Ease — Travel Booking Web App</h1>
-  <p><em>Streamline your journey: search, compare & book flights, hotels & packages in one place.</em></p>
+  <p><em>Streamline your journey: search, compare & book hotels, packages in one place.</em></p>
 </p>
 
 ---
