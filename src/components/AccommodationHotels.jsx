@@ -70,40 +70,37 @@ export default function AccommodationHotels() {
 
   // 4) Default: show list of hotels
   return (
-    <div className="max-w-3xl mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Available Hotels</h2>
-      {error && <p className="text-red-600">{error}</p>}
-
+    <div>
+    <h2>Available Hotels</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {hotels.length > 0 ? (
-        <table className="w-full table-auto border-collapse mb-6">
-          <thead className="bg-gray-200">
+        <table border="1" cellPadding="12" cellSpacing="0" style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead style={{ backgroundColor: 'grey' }}>
             <tr>
-              <th className="p-3 text-left">Hotel</th>
-              <th className="p-3">City</th>
-              <th className="p-3">Rating</th>
-              <th className="p-3">Room Type</th>
-              <th className="p-3">Price ($)</th>
-              <th className="p-3">Action</th>
+              <th>Hotel</th>
+              <th>City</th>
+              <th>Rating</th>
+              <th>Room Type</th>
+              <th>Price per Night ($)</th>
+              <th>Selection</th>
             </tr>
           </thead>
           <tbody>
-            {hotels.map(hotel => (
-              <tr key={hotel.id} className="border-t">
-                <td className="p-3">
+            {hotels.map((hotel) => (
+              <tr key={hotel.id}>
+                <td>
                   <strong>{hotel.hotel_name}</strong><br/>
-                  <small className="text-gray-600">{hotel.address}</small>
+                  <small>{hotel.address}</small>
                 </td>
-                <td className="p-3 text-center">{hotel.city}</td>
-                <td className="p-3 text-center">{hotel.rating}</td>
-                <td className="p-3 text-center">{hotel.room_type}</td>
-                <td className="p-3 text-center">${hotel.room_price}</td>
-                <td className="p-3 text-center">
-                  <button
-                    className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-                    onClick={() => setSelectedHotel(hotel)}
-                  >
-                    Complete Booking
-                  </button>
+                <td style={{ textAlign: 'center' }}>{hotel.city}</td>
+                <td style={{ textAlign: 'center' }}>{hotel.rating}</td>
+                <td style={{ textAlign: 'center' }}>{hotel.room_type}</td>
+                <td style={{ textAlign: 'center' }}>${hotel.room_price}</td>
+                <td style={{ textAlign: 'center' }}>
+                <button
+          className="w-full py-2 px-4 bg-green-600 text-white font-medium rounded hover:bg-green-700 transition"
+          onClick={() => setShowPaymentForm(true)}
+        > Complete Booking </button>
                 </td>
               </tr>
             ))}
