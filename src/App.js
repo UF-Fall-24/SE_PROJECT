@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { FaHome, FaInfoCircle, FaPhone } from 'react-icons/fa';
-
+import Payment from './components/payment';
 // Lazy load components
 const Home = lazy(() => import('./components/Home'));
 const Register = lazy(() => import('./components/Register'));
@@ -22,7 +22,7 @@ const PackagesList = lazy(() => import('./components/PackagesList'));
 const PackageDetails = lazy(() => import('./components/PackageDetails'));
 const AccommodationHotels = lazy(() => import('./components/AccommodationHotels'));
 const HotelDetails = lazy(() => import('./components/HotelDetails'));
-//const Payment = lazy(() => import('./components/payment'));
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

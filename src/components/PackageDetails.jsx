@@ -28,7 +28,7 @@ const PackageDetails = () => {
   };
 
   const handlePaymentClick = () => {
-    navigate('/payment');
+    navigate('/payment/' + pkg.id);
   };
 
   if (error) return <p style={{ color: 'red' }}>Error: {error}</p>;
