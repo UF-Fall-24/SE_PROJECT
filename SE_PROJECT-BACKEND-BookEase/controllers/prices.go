@@ -39,15 +39,15 @@ func GetTotalPrice(w http.ResponseWriter, r *http.Request) {
 
 	// 3) if accommodation_id provided, fetch and add
 	if accIDStr := q.Get("accommodation_id"); accIDStr != "" {
-		if accID, err := strconv.Atoi(accIDStr); err == nil {
-			var accPrice float64
-			if err := config.DB.QueryRow(
-				"SELECT price FROM accommodations WHERE id = ?", accID,
-			).Scan(&accPrice); err == nil {
-				total += accPrice
-			}
-			// if error, we simply ignore accommodation price
+
+		var accPrice float64
+		if err := config.DB.QueryRow(
+			"SELECT price FROM accommodation_bookings WHERE accommodation_booking_id = ?", accIDStr,
+		).Scan(&accPrice); err == nil {
+			total += accPrice
 		}
+		// if error, we simply ignore accommodation price
+
 	}
 
 	// 4) return only the total_price
