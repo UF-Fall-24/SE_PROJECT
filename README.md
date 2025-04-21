@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/UF-Fall-24/SE_PROJECT/main/logo.svg" alt="Book Ease Logo" width="150" />
   <h1>📖 Book Ease — Travel Booking Web App</h1>
   <p><em>Streamline your journey: search, compare & book flights, hotels & packages in one place.</em></p>
 </p>
@@ -10,17 +9,16 @@
 1. [Project Overview](#project-overview)
 2. [Team & Roles](#team--roles)
 3. [Tech Stack](#tech-stack)
-4. [🚀 Live Demo & Video](#-live-demo--video)
-5. [🎯 Features](#-features)
-6. [💻 Getting Started](#-getting-started)
+4. [🎯 Features](#-features)
+5. [💻 Getting Started](#-getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Environment Variables](#environment-variables)
    - [Running Locally](#running-locally)
-7. [🧪 Testing](#-testing)
-8. [📁 Project Structure](#-project-structure)
-9. [🤝 Contributing](#-contributing)
-10. [📜 License](#-license)
+6. [🧪 Testing](#-testing)
+7. [📁 Project Structure](#-project-structure)
+8. [🤝 Contributing](#-contributing)
+9. [📜 License](#-license)
 
 ---
 
